@@ -79,14 +79,14 @@
             return n === 0
                 ? 0
                 : n === 1
-                ? 1
-                : n === 2
-                ? 2
-                : n % 100 >= 3 && n % 100 <= 10
-                ? 3
-                : n % 100 >= 11
-                ? 4
-                : 5;
+                  ? 1
+                  : n === 2
+                    ? 2
+                    : n % 100 >= 3 && n % 100 <= 10
+                      ? 3
+                      : n % 100 >= 11
+                        ? 4
+                        : 5;
         },
         plurals = {
             s: [
@@ -292,14 +292,14 @@
             return n === 0
                 ? 0
                 : n === 1
-                ? 1
-                : n === 2
-                ? 2
-                : n % 100 >= 3 && n % 100 <= 10
-                ? 3
-                : n % 100 >= 11
-                ? 4
-                : 5;
+                  ? 1
+                  : n === 2
+                    ? 2
+                    : n % 100 >= 3 && n % 100 <= 10
+                      ? 3
+                      : n % 100 >= 11
+                        ? 4
+                        : 5;
         },
         plurals$1 = {
             s: [
@@ -678,14 +678,14 @@
             return n === 0
                 ? 0
                 : n === 1
-                ? 1
-                : n === 2
-                ? 2
-                : n % 100 >= 3 && n % 100 <= 10
-                ? 3
-                : n % 100 >= 11
-                ? 4
-                : 5;
+                  ? 1
+                  : n === 2
+                    ? 2
+                    : n % 100 >= 3 && n % 100 <= 10
+                      ? 3
+                      : n % 100 >= 11
+                        ? 4
+                        : 5;
         },
         plurals$2 = {
             s: [
@@ -938,8 +938,8 @@
         return num % 10 === 1 && num % 100 !== 11
             ? forms[0]
             : num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20)
-            ? forms[1]
-            : forms[2];
+              ? forms[1]
+              : forms[2];
     }
     function relativeTimeWithPlural(number, withoutSuffix, key) {
         var format = {
@@ -1954,12 +1954,12 @@
                 number === 1
                     ? 'r'
                     : number === 2
-                    ? 'n'
-                    : number === 3
-                    ? 'r'
-                    : number === 4
-                    ? 't'
-                    : 'è';
+                      ? 'n'
+                      : number === 3
+                        ? 'r'
+                        : number === 4
+                          ? 't'
+                          : 'è';
             if (period === 'w' || period === 'W') {
                 output = 'a';
             }
@@ -1974,13 +1974,14 @@
     //! moment.js locale configuration
 
     var months$3 = {
-            format: 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split(
-                '_'
-            ),
             standalone:
-                'ledna_února_března_dubna_května_června_července_srpna_září_října_listopadu_prosince'.split(
+                'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split(
                     '_'
                 ),
+            format: 'ledna_února_března_dubna_května_června_července_srpna_září_října_listopadu_prosince'.split(
+                '_'
+            ),
+            isFormat: /DD?[o.]?(\[[^\[\]]*\]|\s)+MMMM/,
         },
         monthsShort = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_'),
         monthsParse$1 = [
@@ -2182,8 +2183,8 @@
                 var affix = /сехет$/i.exec(output)
                     ? 'рен'
                     : /ҫул$/i.exec(output)
-                    ? 'тан'
-                    : 'ран';
+                      ? 'тан'
+                      : 'ран';
                 return output + affix;
             },
             past: '%s каялла',
@@ -2812,12 +2813,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -2877,12 +2878,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
     });
@@ -2938,12 +2939,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -3003,12 +3004,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -3068,12 +3069,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
     });
@@ -3129,12 +3130,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -3194,12 +3195,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -3259,12 +3260,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -6108,8 +6109,8 @@
                             (this.hours() > 1
                                 ? 'lle '
                                 : this.hours() === 0
-                                ? ' '
-                                : "ll'") +
+                                  ? ' '
+                                  : "ll'") +
                             ']LT'
                         );
                     default:
@@ -6118,8 +6119,8 @@
                             (this.hours() > 1
                                 ? 'lle '
                                 : this.hours() === 0
-                                ? ' '
-                                : "ll'") +
+                                  ? ' '
+                                  : "ll'") +
                             ']LT'
                         );
                 }
@@ -7247,8 +7248,8 @@
         return withoutSuffix
             ? forms(key)[0]
             : isFuture
-            ? forms(key)[1]
-            : forms(key)[2];
+              ? forms(key)[1]
+              : forms(key)[2];
     }
     function special(number) {
         return number % 10 === 0 || (number > 10 && number < 20);
@@ -7451,8 +7452,8 @@
             return number === 1
                 ? wordKey[0]
                 : number >= 2 && number <= 4
-                ? wordKey[1]
-                : wordKey[2];
+                  ? wordKey[1]
+                  : wordKey[2];
         },
         translate: function (number, withoutSuffix, key) {
             var wordKey = translator.words[key];
@@ -8526,7 +8527,7 @@
         monthsParse$8 = [
             /^jan/i,
             /^feb/i,
-            /^maart|mrt.?$/i,
+            /^(maart|mrt\.?)$/i,
             /^apr/i,
             /^mei$/i,
             /^jun[i.]?$/i,
@@ -8624,7 +8625,7 @@
         monthsParse$9 = [
             /^jan/i,
             /^feb/i,
-            /^maart|mrt.?$/i,
+            /^(maart|mrt\.?)$/i,
             /^apr/i,
             /^mei$/i,
             /^jun[i.]?$/i,
@@ -8835,12 +8836,12 @@
                 number === 1
                     ? 'r'
                     : number === 2
-                    ? 'n'
-                    : number === 3
-                    ? 'r'
-                    : number === 4
-                    ? 't'
-                    : 'è';
+                      ? 'n'
+                      : number === 3
+                        ? 'r'
+                        : number === 4
+                          ? 't'
+                          : 'è';
             if (period === 'w' || period === 'W') {
                 output = 'a';
             }
@@ -9301,8 +9302,8 @@
         return num % 10 === 1 && num % 100 !== 11
             ? forms[0]
             : num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20)
-            ? forms[1]
-            : forms[2];
+              ? forms[1]
+              : forms[2];
     }
     function relativeTimeWithPlural$3(number, withoutSuffix, key) {
         var format = {
@@ -10449,12 +10450,12 @@
                     ~~((number % 100) / 10) === 1
                         ? ':e'
                         : b === 1
-                        ? ':a'
-                        : b === 2
-                        ? ':a'
-                        : b === 3
-                        ? ':e'
-                        : ':e';
+                          ? ':a'
+                          : b === 2
+                            ? ':a'
+                            : b === 3
+                              ? ':e'
+                              : ':e';
             return number + output;
         },
         week: {
@@ -10777,12 +10778,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {
@@ -11119,10 +11120,10 @@
             output.indexOf('jaj') !== -1
                 ? time.slice(0, -3) + 'leS'
                 : output.indexOf('jar') !== -1
-                ? time.slice(0, -3) + 'waQ'
-                : output.indexOf('DIS') !== -1
-                ? time.slice(0, -3) + 'nem'
-                : time + ' pIq';
+                  ? time.slice(0, -3) + 'waQ'
+                  : output.indexOf('DIS') !== -1
+                    ? time.slice(0, -3) + 'nem'
+                    : time + ' pIq';
         return time;
     }
 
@@ -11132,10 +11133,10 @@
             output.indexOf('jaj') !== -1
                 ? time.slice(0, -3) + 'Hu’'
                 : output.indexOf('jar') !== -1
-                ? time.slice(0, -3) + 'wen'
-                : output.indexOf('DIS') !== -1
-                ? time.slice(0, -3) + 'ben'
-                : time + ' ret';
+                  ? time.slice(0, -3) + 'wen'
+                  : output.indexOf('DIS') !== -1
+                    ? time.slice(0, -3) + 'ben'
+                    : time + ' ret';
         return time;
     }
 
@@ -11413,8 +11414,8 @@
         return isFuture
             ? format[key][0]
             : withoutSuffix
-            ? format[key][0]
-            : format[key][1];
+              ? format[key][0]
+              : format[key][1];
     }
 
     //! moment.js locale configuration
@@ -11634,8 +11635,8 @@
         return num % 10 === 1 && num % 100 !== 11
             ? forms[0]
             : num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20)
-            ? forms[1]
-            : forms[2];
+              ? forms[1]
+              : forms[2];
     }
     function relativeTimeWithPlural$4(number, withoutSuffix, key) {
         var format = {
@@ -11683,8 +11684,8 @@
         nounCase = /(\[[ВвУу]\]) ?dddd/.test(format)
             ? 'accusative'
             : /\[?(?:минулої|наступної)? ?\] ?dddd/.test(format)
-            ? 'genitive'
-            : 'nominative';
+              ? 'genitive'
+              : 'nominative';
         return weekdays[nounCase][m.day()];
     }
     function processHoursFunction(str) {
@@ -12099,12 +12100,12 @@
                     ~~((number % 100) / 10) === 1
                         ? 'th'
                         : b === 1
-                        ? 'st'
-                        : b === 2
-                        ? 'nd'
-                        : b === 3
-                        ? 'rd'
-                        : 'th';
+                          ? 'st'
+                          : b === 2
+                            ? 'nd'
+                            : b === 3
+                              ? 'rd'
+                              : 'th';
             return number + output;
         },
         week: {

@@ -624,12 +624,56 @@ function pastFuture(diff, output) {
     return isFunction(format) ? format(output) : format.replace(/%s/i, output);
 }
 
-var aliases = {};
-
-function addUnitAlias(unit, shorthand) {
-    var lowerCase = unit.toLowerCase();
-    aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
-}
+var aliases = {
+    D: 'date',
+    dates: 'date',
+    date: 'date',
+    d: 'day',
+    days: 'day',
+    day: 'day',
+    e: 'weekday',
+    weekdays: 'weekday',
+    weekday: 'weekday',
+    E: 'isoWeekday',
+    isoweekdays: 'isoWeekday',
+    isoweekday: 'isoWeekday',
+    DDD: 'dayOfYear',
+    dayofyears: 'dayOfYear',
+    dayofyear: 'dayOfYear',
+    h: 'hour',
+    hours: 'hour',
+    hour: 'hour',
+    ms: 'millisecond',
+    milliseconds: 'millisecond',
+    millisecond: 'millisecond',
+    m: 'minute',
+    minutes: 'minute',
+    minute: 'minute',
+    M: 'month',
+    months: 'month',
+    month: 'month',
+    Q: 'quarter',
+    quarters: 'quarter',
+    quarter: 'quarter',
+    s: 'second',
+    seconds: 'second',
+    second: 'second',
+    gg: 'weekYear',
+    weekyears: 'weekYear',
+    weekyear: 'weekYear',
+    GG: 'isoWeekYear',
+    isoweekyears: 'isoWeekYear',
+    isoweekyear: 'isoWeekYear',
+    w: 'week',
+    weeks: 'week',
+    week: 'week',
+    W: 'isoWeek',
+    isoweeks: 'isoWeek',
+    isoweek: 'isoWeek',
+    y: 'year',
+    years: 'year',
+    year: 'year',
+};
 
 function normalizeUnits(units) {
     return typeof units === 'string'
@@ -654,11 +698,24 @@ function normalizeObjectUnits(inputObject) {
     return normalizedInput;
 }
 
-var priorities = {};
-
-function addUnitPriority(unit, priority) {
-    priorities[unit] = priority;
-}
+var priorities = {
+    date: 9,
+    day: 11,
+    weekday: 11,
+    isoWeekday: 11,
+    dayOfYear: 4,
+    hour: 13,
+    millisecond: 16,
+    minute: 14,
+    month: 8,
+    quarter: 7,
+    second: 15,
+    weekYear: 1,
+    isoWeekYear: 1,
+    week: 5,
+    isoWeek: 5,
+    year: 1,
+};
 
 function getPrioritizedUnits(unitsObj) {
     var units = [],
@@ -912,14 +969,6 @@ addFormatToken('MMM', 0, 0, function (format) {
 addFormatToken('MMMM', 0, 0, function (format) {
     return this.localeData().months(this, format);
 });
-
-// ALIASES
-
-addUnitAlias('month', 'M');
-
-// PRIORITY
-
-addUnitPriority('month', 8);
 
 // PARSING
 
@@ -1225,14 +1274,6 @@ addFormatToken(0, ['YYYY', 4], 0, 'year');
 addFormatToken(0, ['YYYYY', 5], 0, 'year');
 addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
 
-// ALIASES
-
-addUnitAlias('year', 'y');
-
-// PRIORITIES
-
-addUnitPriority('year', 1);
-
 // PARSING
 
 addRegexToken('Y', matchSigned);
@@ -1378,16 +1419,6 @@ function weeksInYear(year, dow, doy) {
 addFormatToken('w', ['ww', 2], 'wo', 'week');
 addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
 
-// ALIASES
-
-addUnitAlias('week', 'w');
-addUnitAlias('isoWeek', 'W');
-
-// PRIORITIES
-
-addUnitPriority('week', 5);
-addUnitPriority('isoWeek', 5);
-
 // PARSING
 
 addRegexToken('w', match1to2);
@@ -1453,17 +1484,6 @@ addFormatToken('dddd', 0, 0, function (format) {
 
 addFormatToken('e', 0, 0, 'weekday');
 addFormatToken('E', 0, 0, 'isoWeekday');
-
-// ALIASES
-
-addUnitAlias('day', 'd');
-addUnitAlias('weekday', 'e');
-addUnitAlias('isoWeekday', 'E');
-
-// PRIORITY
-addUnitPriority('day', 11);
-addUnitPriority('weekday', 11);
-addUnitPriority('isoWeekday', 11);
 
 // PARSING
 
@@ -1544,24 +1564,24 @@ function localeWeekdays(m, format) {
     return m === true
         ? shiftWeekdays(weekdays, this._week.dow)
         : m
-        ? weekdays[m.day()]
-        : weekdays;
+          ? weekdays[m.day()]
+          : weekdays;
 }
 
 function localeWeekdaysShort(m) {
     return m === true
         ? shiftWeekdays(this._weekdaysShort, this._week.dow)
         : m
-        ? this._weekdaysShort[m.day()]
-        : this._weekdaysShort;
+          ? this._weekdaysShort[m.day()]
+          : this._weekdaysShort;
 }
 
 function localeWeekdaysMin(m) {
     return m === true
         ? shiftWeekdays(this._weekdaysMin, this._week.dow)
         : m
-        ? this._weekdaysMin[m.day()]
-        : this._weekdaysMin;
+          ? this._weekdaysMin[m.day()]
+          : this._weekdaysMin;
 }
 
 function handleStrictParse$1(weekdayName, format, strict) {
@@ -1909,13 +1929,6 @@ function meridiem(token, lowercase) {
 meridiem('a', true);
 meridiem('A', false);
 
-// ALIASES
-
-addUnitAlias('hour', 'h');
-
-// PRIORITY
-addUnitPriority('hour', 13);
-
 // PARSING
 
 function matchMeridiem(isStrict, locale) {
@@ -2076,7 +2089,8 @@ function chooseLocale(names) {
 
 function isLocaleNameSane(name) {
     // Prevent names that look like filesystem paths, i.e contain '/' or '\'
-    return name.match('^[^/\\\\]*$') != null;
+    // Ensure name is available and function returns boolean
+    return !!(name && name.match('^[^/\\\\]*$'));
 }
 
 function loadLocale(name) {
@@ -2268,21 +2282,21 @@ function checkOverflow(m) {
             a[MONTH] < 0 || a[MONTH] > 11
                 ? MONTH
                 : a[DATE] < 1 || a[DATE] > daysInMonth(a[YEAR], a[MONTH])
-                ? DATE
-                : a[HOUR] < 0 ||
-                  a[HOUR] > 24 ||
-                  (a[HOUR] === 24 &&
-                      (a[MINUTE] !== 0 ||
-                          a[SECOND] !== 0 ||
-                          a[MILLISECOND] !== 0))
-                ? HOUR
-                : a[MINUTE] < 0 || a[MINUTE] > 59
-                ? MINUTE
-                : a[SECOND] < 0 || a[SECOND] > 59
-                ? SECOND
-                : a[MILLISECOND] < 0 || a[MILLISECOND] > 999
-                ? MILLISECOND
-                : -1;
+                  ? DATE
+                  : a[HOUR] < 0 ||
+                      a[HOUR] > 24 ||
+                      (a[HOUR] === 24 &&
+                          (a[MINUTE] !== 0 ||
+                              a[SECOND] !== 0 ||
+                              a[MILLISECOND] !== 0))
+                    ? HOUR
+                    : a[MINUTE] < 0 || a[MINUTE] > 59
+                      ? MINUTE
+                      : a[SECOND] < 0 || a[SECOND] > 59
+                        ? SECOND
+                        : a[MILLISECOND] < 0 || a[MILLISECOND] > 999
+                          ? MILLISECOND
+                          : -1;
 
         if (
             getParsingFlags(m)._overflowDayOfYear &&
@@ -3723,16 +3737,16 @@ function getCalendarFormat(myMoment, now) {
     return diff < -6
         ? 'sameElse'
         : diff < -1
-        ? 'lastWeek'
-        : diff < 0
-        ? 'lastDay'
-        : diff < 1
-        ? 'sameDay'
-        : diff < 2
-        ? 'nextDay'
-        : diff < 7
-        ? 'nextWeek'
-        : 'sameElse';
+          ? 'lastWeek'
+          : diff < 0
+            ? 'lastDay'
+            : diff < 1
+              ? 'sameDay'
+              : diff < 2
+                ? 'nextDay'
+                : diff < 7
+                  ? 'nextWeek'
+                  : 'sameElse';
 }
 
 function calendar$1(time, formats) {
@@ -4582,14 +4596,6 @@ addWeekYearFormatToken('GGGGG', 'isoWeekYear');
 
 // ALIASES
 
-addUnitAlias('weekYear', 'gg');
-addUnitAlias('isoWeekYear', 'GG');
-
-// PRIORITY
-
-addUnitPriority('weekYear', 1);
-addUnitPriority('isoWeekYear', 1);
-
 // PARSING
 
 addRegexToken('G', matchSigned);
@@ -4681,14 +4687,6 @@ function setWeekAll(weekYear, week, weekday, dow, doy) {
 
 addFormatToken('Q', 0, 'Qo', 'quarter');
 
-// ALIASES
-
-addUnitAlias('quarter', 'Q');
-
-// PRIORITY
-
-addUnitPriority('quarter', 7);
-
 // PARSING
 
 addRegexToken('Q', match1);
@@ -4707,13 +4705,6 @@ function getSetQuarter(input) {
 // FORMATTING
 
 addFormatToken('D', ['DD', 2], 'Do', 'date');
-
-// ALIASES
-
-addUnitAlias('date', 'D');
-
-// PRIORITY
-addUnitPriority('date', 9);
 
 // PARSING
 
@@ -4739,13 +4730,6 @@ var getSetDayOfMonth = makeGetSet('Date', true);
 
 addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
 
-// ALIASES
-
-addUnitAlias('dayOfYear', 'DDD');
-
-// PRIORITY
-addUnitPriority('dayOfYear', 4);
-
 // PARSING
 
 addRegexToken('DDD', match1to3);
@@ -4770,14 +4754,6 @@ function getSetDayOfYear(input) {
 
 addFormatToken('m', ['mm', 2], 0, 'minute');
 
-// ALIASES
-
-addUnitAlias('minute', 'm');
-
-// PRIORITY
-
-addUnitPriority('minute', 14);
-
 // PARSING
 
 addRegexToken('m', match1to2);
@@ -4791,14 +4767,6 @@ var getSetMinute = makeGetSet('Minutes', false);
 // FORMATTING
 
 addFormatToken('s', ['ss', 2], 0, 'second');
-
-// ALIASES
-
-addUnitAlias('second', 's');
-
-// PRIORITY
-
-addUnitPriority('second', 15);
 
 // PARSING
 
@@ -4839,14 +4807,6 @@ addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
 addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
     return this.millisecond() * 1000000;
 });
-
-// ALIASES
-
-addUnitAlias('millisecond', 'ms');
-
-// PRIORITY
-
-addUnitPriority('millisecond', 16);
 
 // PARSING
 
@@ -5155,12 +5115,12 @@ getSetGlobalLocale('en', {
                 toInt((number % 100) / 10) === 1
                     ? 'th'
                     : b === 1
-                    ? 'st'
-                    : b === 2
-                    ? 'nd'
-                    : b === 3
-                    ? 'rd'
-                    : 'th';
+                      ? 'st'
+                      : b === 2
+                        ? 'nd'
+                        : b === 3
+                          ? 'rd'
+                          : 'th';
         return number + output;
     },
 });
